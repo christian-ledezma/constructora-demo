@@ -18,7 +18,7 @@ export const IMAGES = {
   projects: {
     "begonias-de-aranjuez": {
       cover: "/images/begonias-1.jpg",
-      gallery: galleryPaths("begonias", 8),
+      gallery: galleryPaths("begonias", 6),
       tour360: ["/images/begonias-360-1.jpg", "/images/begonias-360-2.jpg"] as [
         string,
         string,
@@ -26,7 +26,7 @@ export const IMAGES = {
     },
     "prados-del-oeste": {
       cover: "/images/prados-1.jpg",
-      gallery: galleryPaths("prados", 7),
+      gallery: galleryPaths("prados", 4),
       tour360: ["/images/prados-360-1.jpg", "/images/prados-360-2.jpg"] as [
         string,
         string,
