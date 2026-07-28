@@ -14,7 +14,7 @@ function galleryPaths(slug: string, count: number): string[] {
 
 export const IMAGES = {
   hero: "/images/hero.jpg",
-  logo: "/images/logo.jpg",
+  logo: "/images/logo.png",
   projects: {
     "begonias-de-aranjuez": {
       cover: "/images/begonias-1.jpg",
