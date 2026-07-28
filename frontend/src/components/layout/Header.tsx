@@ -42,7 +42,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
         <Link href="/" aria-label="Bernales Constructora — inicio">
-          <Logo className="h-9 w-auto sm:h-12" />
+          <Logo className="h-9 w-auto sm:h-11" />
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">

@@ -30,14 +30,14 @@ export function FacebookIcon(props: IconProps) {
   );
 }
 
-export function LinkedinIcon(props: IconProps) {
+export function TikTokIcon(props: IconProps) {
   return (
-    <svg {...base} {...props}>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <line x1="7.8" y1="10.5" x2="7.8" y2="16.5" />
-      <circle cx="7.8" cy="7.3" r="0.4" fill="currentColor" stroke="none" />
-      <path d="M11.5 16.5v-3.6c0-1.3.9-2.4 2.2-2.4s2 .9 2 2.4v3.6" />
-      <line x1="11.5" y1="10.5" x2="11.5" y2="16.5" />
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.28h-3.12v12.2a2.53 2.53 0 1 1-2.53-2.53c.28 0 .55.04.8.13V9.05a5.65 5.65 0 0 0-.8-.06A5.66 5.66 0 1 0 15.82 14V8.68a7.92 7.92 0 0 0 4.18 1.19V6.69h-.41z" />
     </svg>
   );
 }

@@ -5,13 +5,13 @@ import Logo from "@/components/ui/Logo";
 import {
   InstagramIcon,
   FacebookIcon,
-  LinkedinIcon,
+  TikTokIcon,
 } from "@/components/ui/SocialIcons";
 
 const socials = [
   { href: "https://instagram.com", label: "Instagram", icon: InstagramIcon },
   { href: "https://facebook.com", label: "Facebook", icon: FacebookIcon },
-  { href: "https://linkedin.com", label: "LinkedIn", icon: LinkedinIcon },
+  { href: "https://tiktok.com", label: "LinkedIn", icon: TikTokIcon },
 ];
 
 export default function Footer() {
@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-16 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-12 w-auto" />
             <ArcDivider tone="stone" className="my-6" />
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
               Diseñamos y construimos edificios residenciales en Cochabamba,
@@ -52,7 +52,7 @@ export default function Footer() {
             <ul className="mt-6 space-y-4 text-sm text-white/70">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
-                Av. Ballivián y Calle México, Cochabamba, Bolivia
+                Av. Las Begonias / calle Los Sauces , Cochabamba, Bolivia
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0" strokeWidth={1.5} />
