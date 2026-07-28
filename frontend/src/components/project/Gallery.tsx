@@ -53,26 +53,27 @@ const LAYOUTS: Record<
   },
 };
 
-export default function Gallery({ projectName, images }: GalleryProps) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+interface ThumbnailProps {
+  src: string;
+  index: number;
+  projectName: string;
+  onSelect: (index: number) => void;
+  className?: string;
+  sizes: string;
+}
 
-  const visible = images.slice(0, 5);
-  const layout = LAYOUTS[visible.length] ?? LAYOUTS[5];
-
-  const Thumbnail = ({
-    src,
-    index,
-    className,
-    sizes,
-  }: {
-    src: string;
-    index: number;
-    className?: string;
-    sizes: string;
-  }) => (
+function Thumbnail({
+  src,
+  index,
+  projectName,
+  onSelect,
+  className,
+  sizes,
+}: ThumbnailProps) {
+  return (
     <button
       type="button"
-      onClick={() => setLightboxIndex(index)}
+      onClick={() => onSelect(index)}
       className={cn(
         "group relative block h-full w-full overflow-hidden",
         className,
@@ -89,6 +90,13 @@ export default function Gallery({ projectName, images }: GalleryProps) {
       <span className="absolute inset-0 bg-charcoal-deep/0 transition-colors group-hover:bg-charcoal-deep/15" />
     </button>
   );
+}
+
+export default function Gallery({ projectName, images }: GalleryProps) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const visible = images.slice(0, 5);
+  const layout = LAYOUTS[visible.length] ?? LAYOUTS[5];
 
   return (
     <section className="bg-charcoal-deep py-24 sm:py-28">
@@ -102,8 +110,14 @@ export default function Gallery({ projectName, images }: GalleryProps) {
 
         <RevealOnScroll delay={0.1} className="relative mt-14">
           {/* Mobile: single lead photo, full width */}
-          <div className="sm:hidden">
-            <Thumbnail src={visible[0]} index={0} sizes="100vw" />
+          <div className="aspect-[4/3] sm:hidden">
+            <Thumbnail
+              src={visible[0]}
+              index={0}
+              projectName={projectName}
+              onSelect={setLightboxIndex}
+              sizes="100vw"
+            />
           </div>
 
           {/* Tablet and up: adaptive mosaic */}
@@ -113,6 +127,8 @@ export default function Gallery({ projectName, images }: GalleryProps) {
                 key={src}
                 src={src}
                 index={index}
+                projectName={projectName}
+                onSelect={setLightboxIndex}
                 className={layout.cell(index)}
                 sizes="(min-width: 1024px) 50vw, 100vw"
               />

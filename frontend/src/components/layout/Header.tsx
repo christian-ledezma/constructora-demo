@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/ui/Logo";
 import MobileNav from "@/components/layout/MobileNav";
 
 export const NAV_LINKS = [
@@ -40,13 +41,8 @@ export default function Header() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="group flex flex-col leading-none">
-          <span className="font-display text-xl font-semibold uppercase tracking-[0.32em] text-white">
-            Bernales
-          </span>
-          <span className="mt-1 text-[10px] tracking-[0.3em] text-stone-light">
-            constructora.
-          </span>
+        <Link href="/" aria-label="Bernales Constructora — inicio">
+          <Logo className="h-9 w-auto sm:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">

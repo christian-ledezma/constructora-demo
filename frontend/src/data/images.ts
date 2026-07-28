@@ -3,21 +3,22 @@
  *
  * All filenames are placeholders. Replace the files inside
  * `public/images/` with real photography and this object never
- * needs to change.
+ * needs to change — except bumping the count below if a project
+ * gets more or fewer photos.
  */
+
+/** Builds `/images/<slug>-1.jpg` … `/images/<slug>-<count>.jpg`. */
+function galleryPaths(slug: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `/images/${slug}-${i + 1}.jpg`);
+}
+
 export const IMAGES = {
   hero: "/images/hero.jpg",
+  logo: "/images/logo.jpg",
   projects: {
     "begonias-de-aranjuez": {
       cover: "/images/begonias-1.jpg",
-      gallery: [
-        "/images/begonias-1.jpg",
-        "/images/begonias-2.jpg",
-        "/images/begonias-3.jpg",
-        "/images/begonias-4.jpg",
-        "/images/begonias-5.jpg",
-        "/images/begonias-6.jpg",
-      ],
+      gallery: galleryPaths("begonias", 8),
       tour360: ["/images/begonias-360-1.jpg", "/images/begonias-360-2.jpg"] as [
         string,
         string,
@@ -25,12 +26,7 @@ export const IMAGES = {
     },
     "prados-del-oeste": {
       cover: "/images/prados-1.jpg",
-      gallery: [
-        "/images/prados-1.jpg",
-        "/images/prados-2.jpg",
-        "/images/prados-3.jpg",
-        "/images/prados-4.jpg",
-      ],
+      gallery: galleryPaths("prados", 7),
       tour360: ["/images/prados-360-1.jpg", "/images/prados-360-2.jpg"] as [
         string,
         string,

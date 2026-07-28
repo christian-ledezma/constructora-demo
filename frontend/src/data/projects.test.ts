@@ -14,12 +14,19 @@ describe("projects data", () => {
   });
 
   it.each(projects)(
-    "gives $name exactly 5 gallery images and 2 panoramas",
+    "gives $name a non-empty gallery and exactly 2 panoramas",
     (project) => {
-      expect(project.gallery).toHaveLength(5);
+      // Gallery length is intentionally not fixed to any number - projects
+      // can have as many photos as they need.
+      expect(project.gallery.length).toBeGreaterThan(0);
       expect(project.tour360).toHaveLength(2);
     },
   );
+
+  it("does not force every project to have the same number of photos", () => {
+    const counts = projects.map((project) => project.gallery.length);
+    expect(new Set(counts).size).toBeGreaterThan(1);
+  });
 
   it("finds a project by slug", () => {
     const project = getProjectBySlug("prados-del-oeste");

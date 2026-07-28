@@ -107,19 +107,57 @@ def make_placeholder(filename, size, title, subtitle, tone="light"):
     print("wrote", path, size)
 
 
+def make_logo_placeholder(filename, size=(900, 230)):
+    """Transparent wordmark placeholder for the header/footer logo slot."""
+    w, h = size
+    img = Image.new("RGBA", size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    title_size = int(h * 0.42)
+    sub_size = int(h * 0.14)
+    title_font = ImageFont.truetype(FONT_DISPLAY, title_size)
+    sub_font = ImageFont.truetype(FONT_BODY, sub_size)
+
+    title, subtitle = "BERNALES", "constructora."
+
+    tb = draw.textbbox((0, 0), title, font=title_font)
+    tw, th = tb[2] - tb[0], tb[3] - tb[1]
+    ty = h * 0.14
+    draw.text(((w - tw) / 2, ty), title, font=title_font, fill=(255, 255, 255, 255))
+
+    sb = draw.textbbox((0, 0), subtitle, font=sub_font)
+    sw, _sh = sb[2] - sb[0], sb[3] - sb[1]
+    draw.text(
+        ((w - sw) / 2, ty + th + h * 0.08),
+        subtitle,
+        font=sub_font,
+        fill=(230, 222, 208, 255),
+    )
+
+    path = os.path.join(OUT_DIR, filename)
+    img.save(path, "PNG")
+    print("wrote", path, size, "(transparent)")
+
+
 STANDARD_SIZE = (1600, 1067)
 PANO_SIZE = (2048, 1024)
 HERO_SIZE = (1920, 1080)
 
+# How many gallery photos each project has. Not fixed at 5 - bump these
+# (and add the matching files) whenever a project has more or fewer photos.
+GALLERY_COUNTS = {"begonias": 8, "prados": 7}
+
 make_placeholder("hero.jpg", HERO_SIZE, "BERNALES", "constructora — imagen de portada", tone="dark")
+make_logo_placeholder("logo.png")
 
 for slug, label in [("begonias", "Begonias de Aranjuez"), ("prados", "Prados del Oeste")]:
-    for i in range(1, 6):
+    count = GALLERY_COUNTS[slug]
+    for i in range(1, count + 1):
         make_placeholder(
             f"{slug}-{i}.jpg",
             STANDARD_SIZE,
             label.upper(),
-            f"fotografía {i} de 5 — reemplazar",
+            f"fotografía {i} de {count} — reemplazar",
             tone="light" if i % 2 == 0 else "dark",
         )
     for i in range(1, 3):

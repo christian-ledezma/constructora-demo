@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import ArcDivider from "@/components/ui/ArcDivider";
+import Logo from "@/components/ui/Logo";
 import { NAV_LINKS } from "@/components/layout/Header";
 
 interface MobileNavProps {
@@ -16,16 +17,14 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-50 flex flex-col bg-charcoal-deep md:hidden"
         >
           <div className="flex items-center justify-between px-6 py-6">
-            <span className="font-display text-sm font-semibold uppercase tracking-[0.32em] text-white">
-              Bernales
-            </span>
+            <Logo className="h-8 w-auto" />
             <button
               type="button"
               onClick={onClose}

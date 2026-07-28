@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import ArcDivider from "@/components/ui/ArcDivider";
+import Logo from "@/components/ui/Logo";
 import {
   InstagramIcon,
   FacebookIcon,
@@ -21,12 +22,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-16 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <span className="font-display text-2xl font-semibold uppercase tracking-[0.32em]">
-              Bernales
-            </span>
-            <span className="mt-1 block text-[11px] tracking-[0.3em] text-stone-light">
-              constructora.
-            </span>
+            <Logo className="h-10 w-auto" />
             <ArcDivider tone="stone" className="my-6" />
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
               Diseñamos y construimos edificios residenciales en Cochabamba,
