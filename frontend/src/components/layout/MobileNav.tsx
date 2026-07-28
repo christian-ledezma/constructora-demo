@@ -1,5 +1,7 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
@@ -12,8 +14,21 @@ interface MobileNavProps {
   onClose: () => void;
 }
 
+const noopSubscribe = () => () => {};
+
+function useIsClient() {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+}
+
+
 export default function MobileNav({ open, onClose }: MobileNavProps) {
-  return (
+  const isClient = useIsClient();
+
+  const panel = (
     <AnimatePresence>
       {open && (
         <motion.div
@@ -58,4 +73,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
       )}
     </AnimatePresence>
   );
+
+  if (!isClient) return null;
+  return createPortal(panel, document.body);
 }
