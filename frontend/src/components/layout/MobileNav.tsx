@@ -50,7 +50,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col justify-center gap-8 px-8">
+          <nav className="flex flex-1 flex-col justify-start gap-8 px-8 pt-12">
             {NAV_LINKS.map((link, index) => (
               <motion.div
                 key={link.href}
@@ -61,7 +61,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="font-display text-4xl font-medium uppercase tracking-wide text-white"
+                  className="font-display text-2xl font-medium uppercase tracking-wide text-white"
                 >
                   {link.label}
                 </Link>
